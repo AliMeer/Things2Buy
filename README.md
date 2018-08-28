@@ -1,6 +1,7 @@
-# MERN Shopping List
+# List creation and management app
 
-> Shopping list app built with the MERN stack along with Redux for state management, Reactstrap and react-transition-group.
+> Built using React, Node, Redux, Router, Express, reacstrap and MongoDB
+
 
 ## Quick Start
 
@@ -31,8 +32,8 @@ There is a Heroku post build script so that you do not have to compile your Reac
 
 ### Author
 
-Brad Traversy
-[Traversy Media](http://www.traversymedia.com)
+
+[Ali Meer](https://github.com/AliMeer/Things2Buy)
 
 ### Version
 
