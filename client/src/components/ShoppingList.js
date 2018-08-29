@@ -19,7 +19,7 @@ class ShoppingList extends Component {
     return (
       <Container>
         <ListGroup>
-        <ListGroupItem style="{}" className="list-group-item-heading">Item <Badge pill>Qty</Badge></ListGroupItem>
+        <ListGroupItem style={{background: "#DDDDDD"}} className="list-group-item-heading">Item <span style={{padding: "7px"}} ></span><Badge pill style={{background: '#4e91fc'}}> Qty </Badge></ListGroupItem>
           <TransitionGroup className="shopping-list">
             {items.map(({ _id, name, quantity }) => (
               <CSSTransition key={_id} timeout={500} classNames="fade">
@@ -32,7 +32,7 @@ class ShoppingList extends Component {
                   >
                     &times;
                   </Button>
-                  {name} <Badge pill>{quantity}</Badge>
+                  {name} <span style={{padding: "7px"}} ></span><Badge pill  style={{background: "#4e91fc"}} >{quantity}</Badge>
                 </ListGroupItem>
               </CSSTransition>
             ))}
