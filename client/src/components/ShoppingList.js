@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
+import { Container, ListGroup, ListGroupItem, Button, Badge, ListGroupItemHeading } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
 import { getItems, deleteItem } from '../actions/itemActions';
@@ -19,6 +19,7 @@ class ShoppingList extends Component {
     return (
       <Container>
         <ListGroup>
+        <ListGroupItem style="{}" className="list-group-item-heading">Item <Badge pill>Qty</Badge></ListGroupItem>
           <TransitionGroup className="shopping-list">
             {items.map(({ _id, name, quantity }) => (
               <CSSTransition key={_id} timeout={500} classNames="fade">
@@ -31,7 +32,7 @@ class ShoppingList extends Component {
                   >
                     &times;
                   </Button>
-                  {name} | {quantity} 
+                  {name} <Badge pill>{quantity}</Badge>
                 </ListGroupItem>
               </CSSTransition>
             ))}
