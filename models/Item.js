@@ -13,7 +13,7 @@ const ItemSchema = new Schema({
   },
   listName: {
     type: String,
-    default: "My List"
+    default: "Zoya's Art & Craft"
   },
   urgency: {
     type: String,

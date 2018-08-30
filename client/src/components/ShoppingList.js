@@ -6,23 +6,37 @@ import { getItems, deleteItem } from '../actions/itemActions';
 import PropTypes from 'prop-types';
 
 class ShoppingList extends Component {
+  
   componentDidMount() {
     this.props.getItems();
   }
 
   onDeleteClick = id => {
     this.props.deleteItem(id);
+
+    
   };
 
+  
   render() {
+    var oldListName = '';
     const { items } = this.props.item;
     return (
       <Container>
         <ListGroup>
-        <ListGroupItem style={{background: "#DDDDDD"}} className="list-group-item-heading">Item <span style={{padding: "7px"}} ></span><Badge pill style={{background: '#4e91fc'}}> Qty </Badge></ListGroupItem>
+        
           <TransitionGroup className="shopping-list">
-            {items.map(({ _id, name, quantity }) => (
-              <CSSTransition key={_id} timeout={500} classNames="fade">
+            {items.map(({ _id, name, quantity, listName, urgency }) => (
+             
+              <React.Fragment key={_id} >
+                
+            {(oldListName!=listName) ? 
+              
+              <ListGroupItem style={{background: "#DDDDDD"}} className="list-group-item-heading">Things2Get for <span style={{padding: "3px", color: "#4e91fc"}} >{listName}</span></ListGroupItem>
+       
+              : ""}
+            {(oldListName=listName) ? "": ""}
+               <CSSTransition key={_id} timeout={500} classNames="fade">
                 <ListGroupItem>
                   <Button
                     className="remove-btn"
@@ -35,6 +49,7 @@ class ShoppingList extends Component {
                   {name} <span style={{padding: "7px"}} ></span><Badge pill  style={{background: "#4e91fc"}} >{quantity}</Badge>
                 </ListGroupItem>
               </CSSTransition>
+              </React.Fragment>
             ))}
           </TransitionGroup>
         </ListGroup>
