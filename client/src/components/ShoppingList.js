@@ -13,8 +13,6 @@ class ShoppingList extends Component {
 
   onDeleteClick = id => {
     this.props.deleteItem(id);
-
-    
   };
 
   
@@ -25,17 +23,23 @@ class ShoppingList extends Component {
       <Container>
         <ListGroup>
         
-          <TransitionGroup className="shopping-list">
+          
             {items.map(({ _id, name, quantity, listName, urgency }) => (
              
               <React.Fragment key={_id} >
                 
             {(oldListName!=listName) ? 
               
-              <ListGroupItem style={{background: "#DDDDDD"}} className="list-group-item-heading">Things2Get for <span style={{padding: "3px", color: "#4e91fc"}} >{listName}</span></ListGroupItem>
+              <ListGroupItem style={{background: "#DDDDDD"}} className="list-group-item-heading">Things2Get for <span style={{padding: "3px", color: "#4e91fc", fontSize:"bold"}} >{listName}</span></ListGroupItem>
        
               : ""}
+              
+
+              
+
+
             {(oldListName=listName) ? "": ""}
+            <TransitionGroup className="shopping-list">
                <CSSTransition key={_id} timeout={500} classNames="fade">
                 <ListGroupItem>
                   <Button
@@ -49,9 +53,10 @@ class ShoppingList extends Component {
                   {name} <span style={{padding: "7px"}} ></span><Badge pill  style={{background: "#4e91fc"}} >{quantity}</Badge>
                 </ListGroupItem>
               </CSSTransition>
+              </TransitionGroup>
               </React.Fragment>
             ))}
-          </TransitionGroup>
+          
         </ListGroup>
       </Container>
     );
