@@ -15,7 +15,10 @@ import { addItem } from '../actions/itemActions';
 class ItemModal extends Component {
   state = {
     modal: false,
-    name: ''
+    name: null,
+    listName: null,
+    quantity: null,
+    urgency: null
   };
 
   toggle = () => {
@@ -24,19 +27,43 @@ class ItemModal extends Component {
     });
   };
 
-  onChange = e => {
+  onChangeName = e => {
     this.setState({ [e.target.name]: e.target.value });
+   
   };
 
+  onChangeListName = e => {
+    this.setState({ listName: e.target.value });
+  };
+
+  onChangeQuantity = e => {
+    this.setState({ quantity: e.target.value });
+  };
+  onChangeUrgency = e => {
+    this.setState({ urgency: e.target.value });
+  };
   onSubmit = e => {
     e.preventDefault();
 
     const newItem = {
-      name: this.state.name
+      name: this.state.name,
+      listName: this.state.listName,
+      quantity: this.state.quantity,
+      urgency: this.state.urgency
     };
+    console.log(newItem);
 
     // Add item via addItem action
     this.props.addItem(newItem);
+
+    
+
+    this.setState({
+      name: null,
+    listName: null,
+    quantity: null,
+    urgency: null
+    });
 
     // Close modal
     this.toggle();
@@ -54,7 +81,7 @@ class ItemModal extends Component {
         </Button>
 
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle}>Add To Shopping List</ModalHeader>
+          <ModalHeader toggle={this.toggle}>Add item to List</ModalHeader>
           <ModalBody>
             <Form onSubmit={this.onSubmit}>
               <FormGroup>
@@ -63,8 +90,29 @@ class ItemModal extends Component {
                   type="text"
                   name="name"
                   id="item"
-                  placeholder="Add shopping item"
-                  onChange={this.onChange}
+                  placeholder="Name of Thing (Mandatory)"
+                  onChange={this.onChangeName}
+                />
+                <Input
+                  type="text"
+                  name="listName"
+                  id="item"
+                  placeholder="List Name: e.g: My List (Optional)"
+                  onChange={this.onChangeListName}
+                />
+                <Input
+                  type="text"
+                  name="quantity"
+                  id="item"
+                  placeholder="Quantity: 1 (Optional)"
+                  onChange={this.onChangeQuantity}
+                />
+                <Input
+                  type="text"
+                  name="urgency"
+                  id="item"
+                  placeholder="Urgency: Normal (Optional)"
+                  onChange={this.onChangeUrgency}
                 />
                 <Button color="dark" style={{ marginTop: '2rem' }} block>
                   Add Item
