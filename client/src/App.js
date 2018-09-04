@@ -3,6 +3,7 @@ import AppNavbar from './components/AppNavbar';
 import ShoppingList from './components/ShoppingList';
 import ItemModal from './components/ItemModal';
 import { Container } from 'reactstrap';
+import ListCarousal from './components/ListCarousal';
 
 import { Provider } from 'react-redux';
 import store from './store';
@@ -18,7 +19,8 @@ class App extends Component {
           <AppNavbar />
           <Container>
             <ItemModal />
-            <ShoppingList />
+            
+            <ListCarousal />
           </Container>
         </div>
       </Provider>

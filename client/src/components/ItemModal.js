@@ -79,7 +79,6 @@ class ItemModal extends Component {
         >
           Add Item
         </Button>
-
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>Add item to List</ModalHeader>
           <ModalBody>
