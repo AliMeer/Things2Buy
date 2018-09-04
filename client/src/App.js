@@ -19,7 +19,7 @@ class App extends Component {
           <AppNavbar />
           <Container>
             <ItemModal />
-            
+            <ShoppingList />
             <ListCarousal />
           </Container>
         </div>
